@@ -1,0 +1,149 @@
+* {
+    padding: 0;
+    margin: 0;  
+    box-sizing: border-box;
+}
+
+
+$c-color: #333333;
+$c-white: #ffffff;
+$c-black: #000000;
+$c-gray: #444444;
+
+@mixin font($f-family, $f-weight, $f-style, $f-size, $f-line-height) {
+    font-family: $f-family;
+    font-weight: $f-weight;
+    font-style: $f-style;
+    font-size: $f-size;
+    line-height: $f-line-height;
+}
+
+body {
+    @include font('Roboto', 400, normal, 16px, 1.5);
+    color: $c-color;
+    background-color: $c-white;
+}
+
+.container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 45px;
+}
+
+.tips {
+    padding: 65px 0 80px;
+
+    &__title {
+        @include font('Roboto', 400, normal, 38px, 1.2);
+        margin-bottom: 45px;
+    }
+
+    &__cards {
+        display: flex;
+        justify-content: space-between;
+        gap: 35px;
+    }
+
+    &__card {
+        flex: 1;
+        min-width: 0;
+
+        img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            @include font('Roboto', 500, normal, 21px, 1.3);
+            margin-bottom: 16px;
+        }
+
+        p {
+            @include font('Roboto', 400, normal, 16px, 1.6);
+            color: $c-gray;
+        }
+    }
+}
+
+.footer {
+    background-color: $c-gray;
+    padding: 25px 0;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        img {
+            width: 120px;
+            display: block;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        gap: 55px;
+
+        a {
+            @include font('Roboto', 500, normal, 15px, 1.4);
+            color: $c-white;
+            text-decoration: none;
+            transition: 0.3s;
+
+            &:hover {
+                color: #cccccc;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .tips {
+        &__cards {
+            flex-wrap: wrap;
+        }
+
+        &__card {
+            flex: 1 1 calc(50% - 20px);
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .tips {
+        padding: 40px 0;
+
+        &__title {
+            font-size: 30px;
+        }
+
+        &__cards {
+            flex-direction: column;
+        }
+
+        &__card {
+            width: 100%;
+        }
+    }
+
+    .footer {
+        &__inner {
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        &__nav {
+            gap: 30px;
+        }
+    }
+}
